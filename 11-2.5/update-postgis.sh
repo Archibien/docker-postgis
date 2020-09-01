@@ -21,6 +21,10 @@ for DB in template_postgis "$POSTGRES_DB" "${@}"; do
 
         -- Install Tiger dependencies in case not already installed
         CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;
+        
+        -- Install hstore
+        CREATE EXTENSION IF NOT EXISTS hstore;
+        
         -- Upgrade US Tiger Geocoder
         CREATE EXTENSION IF NOT EXISTS postgis_tiger_geocoder VERSION '$POSTGIS_VERSION';
         ALTER EXTENSION postgis_tiger_geocoder UPDATE TO '$POSTGIS_VERSION';
