@@ -13,6 +13,7 @@ RUN apt-get update \
       && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /docker-entrypoint-initdb.d
+COPY *.sql /docker-entrypoint-initdb.d/
 COPY ./initdb-postgis.sh /docker-entrypoint-initdb.d/10_postgis.sh
 COPY ./update-postgis.sh /usr/local/bin
 
